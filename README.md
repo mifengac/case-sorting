@@ -1,4 +1,4 @@
-# 笔录扫描件转文本（bilu-ocr）
+# 笔录扫描件转文本（case-sorting）
 
 把扫描版**打印体笔录**（PDF / 图片）转成纯文本。面向**完全离线**的内网 Ubuntu 服务器（纯 CPU，无 GPU）。
 
@@ -16,7 +16,7 @@
 ## 目录结构
 
 ```
-bilu-ocr/
+case-sorting/
 ├── app/
 │   ├── main.py          # FastAPI 入口
 │   ├── config.py        # 配置
@@ -38,7 +38,7 @@ bilu-ocr/
 ## 一、有网机器：准备离线包
 
 ```bash
-cd bilu-ocr
+cd case-sorting
 bash scripts/download_offline_bundle.sh
 ```
 
@@ -58,7 +58,7 @@ bash scripts/download_offline_bundle.sh
 ## 二、离线内网：安装并启动
 
 ```bash
-cd bilu-ocr
+cd case-sorting
 bash scripts/install_offline.sh
 bash run.sh
 ```

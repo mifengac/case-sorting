@@ -8,7 +8,7 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
-# 项目根目录：bilu-ocr/
+# 项目根目录：case-sorting/
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 # ---------- 模型路径（可用环境变量覆盖） ----------

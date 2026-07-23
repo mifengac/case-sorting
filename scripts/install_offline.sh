@@ -45,6 +45,11 @@ echo "==> 离线安装依赖（--no-index --find-links=wheels）"
 pip install --upgrade pip --no-index --find-links="$WHEELS_DIR" || true
 pip install --no-index --find-links="$WHEELS_DIR" -r requirements.txt
 
+# 裸 Ubuntu 服务器缺 libGL/libxcb，opencv-python 会 import 失败，
+# 换成不需要图形库的 headless 版（功能一样，仅去掉 GUI 部分）
+pip uninstall -y opencv-python || true
+pip install --no-index --find-links="$WHEELS_DIR" opencv-python-headless
+
 mkdir -p data/uploads data/results
 
 echo ""

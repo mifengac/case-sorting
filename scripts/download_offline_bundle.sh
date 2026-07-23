@@ -15,6 +15,8 @@ echo "==> 下载依赖到: $WHEELS_DIR"
 
 # 按 requirements 下载（含全部传递依赖）
 $PYTHON -m pip download -r requirements.txt -d "$WHEELS_DIR"
+# 裸 Ubuntu 服务器缺 libGL/libxcb，需用 headless 版 opencv 替换（见 install_offline.sh）
+$PYTHON -m pip download opencv-python-headless -d "$WHEELS_DIR"
 
 echo ""
 echo "==> pip 依赖已下载完成。"
@@ -56,7 +58,7 @@ echo "    onnx/PP-OCRv4/cls/ch_ppocr_mobile_v2.0_cls_mobile.onnx -> PP_OCRv4_mob
 echo "    onnx/PP-OCRv5/rec/ch_PP-OCRv5_rec_mobile.onnx   -> PP-OCRv5_mobile_rec.onnx"
 echo ""
 echo "打包拷贝到内网时，至少带上这些内容："
-echo "  - 整个 bilu-ocr 项目代码"
+echo "  - 整个 case-sorting 项目代码"
 echo "  - wheels/ 目录"
 echo "  - models/ 下的 3 个 .onnx 文件"
 echo ""
