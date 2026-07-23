@@ -1,0 +1,18 @@
+# 笔录扫描件转文本（case-sorting）
+# 用法：sudo docker compose up -d
+# 前提：已用 docker load -i bilu-ocr-image.tar.gz 导入镜像
+services:
+  bilu-ocr:
+    image: bilu-ocr:latest
+    container_name: bilu-ocr
+    ports:
+      - "5013:8000"          # 左边是服务器对外端口，可按需改
+    volumes:
+      - ./data:/app/data     # 上传文件和识别结果持久化到本目录的 data/
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://127.0.0.1:8000/api/health',timeout=5)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
