@@ -1,0 +1,263 @@
+/* 纯本地样式，无外链字体/CDN */
+:root {
+  --bg: #f4f6f8;
+  --card: #ffffff;
+  --text: #1a1a1a;
+  --muted: #666;
+  --border: #d8dee6;
+  --primary: #1a6fb5;
+  --primary-hover: #155a94;
+  --ok: #1b7f3a;
+  --warn: #b36b00;
+  --err: #b42318;
+  --radius: 10px;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.wrap {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 28px 16px 48px;
+}
+
+.header h1 {
+  margin: 0 0 6px;
+  font-size: 1.6rem;
+  font-weight: 650;
+}
+
+.sub {
+  margin: 0;
+  color: var(--muted);
+}
+
+.limits {
+  margin: 8px 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.dropzone {
+  margin-top: 22px;
+  background: var(--card);
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 36px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  box-shadow: var(--shadow);
+}
+
+.dropzone.dragover {
+  border-color: var(--primary);
+  background: #eef6fc;
+}
+
+.dz-title {
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+}
+
+.dz-hint {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.btn {
+  display: inline-block;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-decoration: none;
+  line-height: 1.4;
+}
+
+.btn:hover {
+  background: #f7f9fb;
+}
+
+.btn.primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background: var(--primary-hover);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.alert {
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: #fdecea;
+  color: var(--err);
+  border: 1px solid #f5c2c0;
+  white-space: pre-wrap;
+}
+
+.task-list,
+.result-panel {
+  margin-top: 24px;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 18px 18px 12px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.task-list h2,
+.result-panel h2 {
+  margin: 0 0 12px;
+  font-size: 1.15rem;
+}
+
+.task-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.task-card:hover {
+  border-color: #b7c7d8;
+}
+
+.task-card.active {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px var(--primary);
+}
+
+.task-name {
+  font-weight: 600;
+  margin-bottom: 4px;
+  word-break: break-all;
+}
+
+.task-meta {
+  font-size: 0.88rem;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  align-items: center;
+}
+
+.status {
+  font-weight: 600;
+}
+
+.status.pending { color: var(--warn); }
+.status.processing { color: var(--primary); }
+.status.done { color: var(--ok); }
+.status.error { color: var(--err); }
+
+.progress {
+  margin-top: 8px;
+  height: 8px;
+  background: #e8edf2;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.progress > span {
+  display: block;
+  height: 100%;
+  background: var(--primary);
+  width: 0%;
+  transition: width 0.25s ease;
+}
+
+.result-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.page-block {
+  border-top: 1px solid var(--border);
+  padding: 14px 0;
+}
+
+.page-block:first-child {
+  border-top: none;
+}
+
+.page-title {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 0 0 8px;
+  font-weight: 600;
+}
+
+.page-text {
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0;
+  font-size: 0.98rem;
+  background: #fafbfc;
+  border: 1px solid #eef1f4;
+  border-radius: 8px;
+  padding: 12px 14px;
+  min-height: 2em;
+}
+
+.footer {
+  margin-top: 28px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #222;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 99;
+}
+
+.toast.show {
+  opacity: 0.95;
+}

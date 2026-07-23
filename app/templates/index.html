@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>笔录扫描件转文本</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="header">
+      <h1>笔录扫描件转文本</h1>
+      <p class="sub">支持 PDF / 图片，离线 OCR，纯 CPU 运行</p>
+      <p class="limits">单文件 ≤ {{ max_upload_mb }} MB · PDF ≤ {{ max_pdf_pages }} 页 · 支持多文件</p>
+    </header>
+
+    <section id="dropzone" class="dropzone" tabindex="0">
+      <div class="dropzone-inner">
+        <p class="dz-title">拖拽文件到这里，或点击选择</p>
+        <p class="dz-hint">PDF、JPG、PNG、BMP、WEBP</p>
+        <input id="fileInput" type="file" multiple accept=".pdf,.jpg,.jpeg,.png,.bmp,.webp,image/*,application/pdf" hidden />
+        <button type="button" id="pickBtn" class="btn primary">选择文件</button>
+      </div>
+    </section>
+
+    <div id="alert" class="alert" hidden></div>
+
+    <section id="taskList" class="task-list" hidden>
+      <h2>识别任务</h2>
+      <div id="tasks"></div>
+    </section>
+
+    <section id="resultPanel" class="result-panel" hidden>
+      <div class="result-toolbar">
+        <h2 id="resultTitle">识别结果</h2>
+        <div class="actions">
+          <button type="button" id="copyBtn" class="btn">一键复制全部</button>
+          <a id="downloadBtn" class="btn primary" href="#">下载 .txt</a>
+        </div>
+      </div>
+      <div id="pages" class="pages"></div>
+      <textarea id="fullText" class="full-text" readonly hidden></textarea>
+    </section>
+
+    <footer class="footer">
+      <span>串行队列处理，避免 CPU 打满 · 结果默认保留 24 小时</span>
+    </footer>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

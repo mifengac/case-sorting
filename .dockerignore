@@ -1,0 +1,10 @@
+.venv/
+.git/
+.gitignore
+__pycache__/
+*.pyc
+wheels/
+data/
+*.md
+models/README.md
+scripts/
