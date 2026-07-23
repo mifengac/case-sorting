@@ -5,7 +5,15 @@ WORKDIR /app
 
 # 先装依赖（利用构建缓存）
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt \
+    -i https://mirrors.aliyun.com/pypi/simple/ \
+    --default-timeout=100 --retries 5 \
+ && pip uninstall -y opencv-python \
+ && pip install --no-cache-dir opencv-python-headless \
+    -i https://mirrors.aliyun.com/pypi/simple/ \
+    --default-timeout=100 --retries 5
+# 说明：slim 镜像没有 libGL/libxcb 等图形库，opencv-python 会 import 失败，
+# 必须换成不需要图形库的 headless 版（功能一样，仅去掉 GUI 部分）。
 
 # 再拷代码、模型、启动脚本
 COPY app/ app/
